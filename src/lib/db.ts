@@ -6,7 +6,11 @@ if (!MONGODB_URI) {
     throw new Error("Please provide a MongoDB URI in the environment variables");
 }
 
-let cached = (global as any).mongoose || { conn: null, promise: null }
+let cached = (global as any).mongoose
+
+if (!cached) {
+    cached = (global as any).mongoose = { conn: null, promise: null }
+}
 
 export async function connectDB() {
     if (cached.conn) return cached.conn;
