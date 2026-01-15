@@ -10,3 +10,11 @@ export const registerSchema = z.object({
     email: z.string().email('invalid email').toLowerCase().trim(),
     password: z.string().min(6, 'password must be at least 6 characters long')
 })
+
+export const emailSchema=z.object({
+    email:z.string().email('invalid email').toLowerCase().trim()
+})
+
+export const resetPasswordSchema=z.object({
+    password:z.string().min(6,'password must be at least 6 characters long')
+})
